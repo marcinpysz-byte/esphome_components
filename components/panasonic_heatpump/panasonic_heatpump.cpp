@@ -153,7 +153,7 @@ namespace esphome
             (this->response_message_.size() == 4 && byte_ != 0x10 && byte_ != 0x21 && byte_ != 0x1E))
         {
           this->response_receiving_ = false;
-          ESP_LOGW(TAG, "Invalid response message: %d. byte is 0x%02X but expexted is 0x01, 0x10 or 0x21",
+          ESP_LOGW(TAG, "Invalid response message: %d. byte is 0x%02X but expexted is 0x01, 0x10 or 0x21 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
             response_message_.size(), byte_);
           delay(10);  // NOLINT
           continue;
@@ -230,7 +230,7 @@ namespace esphome
             (this->request_message_.size() == 4 && byte_ != 0x10 && byte_ != 0x21 && byte_ != 0x1E))
         {
           this->request_receiving_ = false;
-          ESP_LOGW(TAG, "Invalid request message: %d. byte is 0x%02X but expexted is 0x01, 0x10 or 0x21",
+          ESP_LOGW(TAG, "Invalid request message: %d. byte is 0x%02X but expexted is 0x01, 0x10 or 0x21 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
             request_message_.size(), byte_);
           delay(10);  // NOLINT
           continue;
