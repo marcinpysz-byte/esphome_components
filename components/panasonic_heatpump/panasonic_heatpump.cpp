@@ -11,6 +11,7 @@ namespace esphome
     void PanasonicHeatpumpComponent::dump_config()
     {
       ESP_LOGW(TAG, "*** Panasonic Heatpump Component v0.0.4 ***");
+      ESP_LOGI(TAG, "uart_client_ is %s", this->uart_client_ ? "SET" : "nullptr");
       delay(10);  // NOLINT
     }
 
