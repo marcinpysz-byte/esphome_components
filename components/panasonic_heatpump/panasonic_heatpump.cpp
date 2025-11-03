@@ -231,10 +231,10 @@ namespace esphome
         {
           this->request_receiving_ = false;
           ESP_LOGW(TAG, "Invalid request message: %d. byte is 0x%02X but expexted is 0x01, 0x10 or 0x21 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
-          for (size_t i = 0; i < this->request_message_.size(); ++i) {
+            request_message_.size(), byte_);
+           for (size_t i = 0; i < this->request_message_.size(); ++i) {
               ESP_LOGD(TAG, "req[%zu] = 0x%02X", i, this->request_message_[i]);
               }
-            request_message_.size(), byte_);
           delay(10);  // NOLINT
           continue;
         }
