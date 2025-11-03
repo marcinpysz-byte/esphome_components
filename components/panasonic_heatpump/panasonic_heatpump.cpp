@@ -129,10 +129,11 @@ namespace esphome
       {
         // Read each byte from heatpump and forward it directly to the client (CZ-TAW1)
         this->read_byte(&byte_);
-        if (this->uart_client_ != nullptr)
-        {
-          this->uart_client_->write_byte(byte_);
-        }
+       if (this->uart_client_ != nullptr) {
+        this->uart_client_->write_byte(byte_);
+        if ((++this->fwd_rx_to_client_ % 200) == 0)  // co 200 bajtów, żeby nie zaśmiecać
+          ESP_LOGI(TAG, "FWD pump->client: %u bytes", (unsigned) this->fwd_rx_to_client_);
+}
 
         // Message shall start with 0x31, 0x71 or 0xF1, if not skip this byte
         if (!this->response_receiving_)
@@ -209,7 +210,9 @@ namespace esphome
       {
         // Read each byte from client and forward it directly to the heatpump
         this->uart_client_->read_byte(&byte_);
-        this->write_byte(byte_);
+       this->write_byte(byte_);
+        if ((++this->fwd_tx_to_hp_ % 200) == 0)
+        ESP_LOGI(TAG, "FWD client->pump: %u bytes", (unsigned) this->fwd_tx_to_hp_);
 
         // Message shall start with 0x31, 0x71 or 0xF1, if not skip this byte
         if (!this->request_receiving_)
