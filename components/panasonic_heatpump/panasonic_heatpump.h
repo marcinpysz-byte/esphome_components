@@ -126,6 +126,8 @@ namespace esphome
       void send_request(RequestType requestType);
       void read_request();
       ResponseType check_response(const std::vector<uint8_t>& data);
+      size_t fwd_rx_to_client_ = 0;
+      size_t fwd_tx_to_hp_ = 0;
     };
   }  // namespace panasonic_heatpump
 }  // namespace esphome
