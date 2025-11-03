@@ -1,7 +1,7 @@
 #include "panasonic_heatpump.h"
 #include "esphome/core/application.h"
 
-
+test
 namespace esphome
 {
   namespace panasonic_heatpump
