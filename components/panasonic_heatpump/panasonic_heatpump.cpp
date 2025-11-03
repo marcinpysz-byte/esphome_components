@@ -226,7 +226,7 @@ namespace esphome
           this->payload_length_ = byte_;
         }
         // Discard message if format is wrong
-        if ((this->request_message_.size() == 3 && byte_ != 0x01 && byte_ != 0x10) ||
+        /*if ((this->request_message_.size() == 3 && byte_ != 0x01 && byte_ != 0x10) ||
             (this->request_message_.size() == 4 && byte_ != 0x10 && byte_ != 0x21 && byte_ != 0x1E))
         {
           this->request_receiving_ = false;
@@ -237,7 +237,7 @@ namespace esphome
               }
           delay(10);  // NOLINT
           continue;
-        }
+        }*/
 
         // Check if message is complete
         if (this->request_message_.size() > 2 &&
